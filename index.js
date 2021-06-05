@@ -24,7 +24,7 @@ require(["vs/editor/editor.main"], function () {
   for (var i = 0; i < MODES.length; i++) {
     var o = document.createElement("option");
     o.textContent = MODES[i].modeId;
-    if (MODES[i].modeId === "typescript") {
+    if (MODES[i].modeId === "javascript") {
       startModeIndex = i;
     }
     document.querySelector(".language-picker").append(o);
@@ -37,7 +37,8 @@ require(["vs/editor/editor.main"], function () {
     .addEventListener("change", function (evt) {
       loadSample(MODES[this.selectedIndex]);
     });
-
+    changeTheme(1);
+    document.querySelector(".theme-picker").selectedIndex = 1;
   document
     .querySelector(".theme-picker")
     .addEventListener("change", function (evt) {
