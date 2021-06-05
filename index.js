@@ -6,6 +6,16 @@ require(["vs/editor/editor.main"], function () {
   editor = monaco.editor.create(document.getElementById("editor"), {
     value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join("\n"),
     language: "javascript",
+    scrollbar: {
+      useShadows: false,
+      verticalHasArrows: true,
+      horizontalHasArrows: true,
+      vertical: 'visible',
+      horizontal: 'visible',
+      verticalScrollbarSize: 15,
+      horizontalScrollbarSize: 15,
+      arrowSize: 30
+    }
   });
 
   var MODES = (function () {
