@@ -20,25 +20,22 @@ require(["vs/editor/editor.main"], function () {
 
   /* Code snippet to listen cmd/ctrl + S key event */
   editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, function () {
-    /* Variable to store the input box placeholder value */
-    var placeHolderValue = "File name here";
-    /* Code snippet to display the prompt for getting the file name with extension */
-    var fileName = prompt("Enter the file name: ", placeHolderValue);
-    /* Fetching the selected language info from Monacco language list*/
+    var placeHolderValue = "File Name";
+    var fileName = prompt("Input suitable file name ", placeHolderValue);
     var selectedLanguage = monaco.languages
       .getLanguages()
       .filter(function (language) {
         return language.id == editor.getModel()._languageIdentifier.language;
       });
-    /* Variable to store the extension of the selected language */
     var fileExtension = selectedLanguage[0].extensions[0];
-    /* Assigning file name if user input some value, else assigning default value for the file */
-    downloadEditorCode(
-      `${fileName && fileName != placeHolderValue ? fileName : "file"}${
-        fileExtension ? fileExtension : ".txt"
-      }`,
-      editor.getValue()
-    );
+    if (fileName != null) {
+      downloadEditorCode(
+        `${fileName && fileName != placeHolderValue ? fileName : "file"}${
+          fileExtension ? fileExtension : ".txt"
+        }`,
+        editor.getValue()
+      );
+    }
   });
 
   var MODES = (function () {
