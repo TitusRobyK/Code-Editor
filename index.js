@@ -6,6 +6,16 @@ require(["vs/editor/editor.main"], function () {
   editor = monaco.editor.create(document.getElementById("editor"), {
     value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join("\n"),
     language: "javascript",
+    scrollbar: {
+      useShadows: false,
+      verticalHasArrows: true,
+      horizontalHasArrows: true,
+      vertical: 'visible',
+      horizontal: 'visible',
+      verticalScrollbarSize: 15,
+      horizontalScrollbarSize: 15,
+      arrowSize: 30
+    }
   });
 
   var MODES = (function () {
@@ -24,7 +34,7 @@ require(["vs/editor/editor.main"], function () {
   for (var i = 0; i < MODES.length; i++) {
     var o = document.createElement("option");
     o.textContent = MODES[i].modeId;
-    if (MODES[i].modeId === "typescript") {
+    if (MODES[i].modeId === "javascript") {
       startModeIndex = i;
     }
     document.querySelector(".language-picker").append(o);
@@ -37,7 +47,8 @@ require(["vs/editor/editor.main"], function () {
     .addEventListener("change", function (evt) {
       loadSample(MODES[this.selectedIndex]);
     });
-
+    changeTheme(1);
+    document.querySelector(".theme-picker").selectedIndex = 1;
   document
     .querySelector(".theme-picker")
     .addEventListener("change", function (evt) {
