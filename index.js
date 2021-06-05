@@ -10,12 +10,28 @@ require(["vs/editor/editor.main"], function () {
       useShadows: false,
       verticalHasArrows: true,
       horizontalHasArrows: true,
-      vertical: 'visible',
-      horizontal: 'visible',
+      vertical: "visible",
+      horizontal: "visible",
       verticalScrollbarSize: 15,
       horizontalScrollbarSize: 15,
-      arrowSize: 30
-    }
+      arrowSize: 30,
+    },
+  });
+
+  /* Code snippet to listen cmd/ctrl + S key event */
+  editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, function () {
+    /* Variable to store the input box placeholder value */
+    var placeHolderValue = "File name here";
+    /* Code snippet to display the prompt for getting the file name with extension */
+    var fileName = prompt(
+      "Enter the file name with extension: ",
+      placeHolderValue
+    );
+    /* Assigning file name if user input some value, else assigning default value for the file */
+    downloadEditorCode(
+      fileName && fileName != placeHolderValue ? fileName : "test.txt",
+      editor.getValue()
+    );
   });
 
   var MODES = (function () {
@@ -47,8 +63,8 @@ require(["vs/editor/editor.main"], function () {
     .addEventListener("change", function (evt) {
       loadSample(MODES[this.selectedIndex]);
     });
-    changeTheme(1);
-    document.querySelector(".theme-picker").selectedIndex = 1;
+  changeTheme(1);
+  document.querySelector(".theme-picker").selectedIndex = 1;
   document
     .querySelector(".theme-picker")
     .addEventListener("change", function (evt) {
@@ -79,4 +95,16 @@ function loadSample(mode) {
 function changeTheme(theme) {
   var newTheme = theme === 1 ? "vs-dark" : theme === 0 ? "vs" : "hc-black";
   monaco.editor.setTheme(newTheme);
+}
+
+/* Function to download the file with user inputted file name */
+function downloadEditorCode(fileName, data) {
+  var anchorTag = document.createElement("a");
+  var url = window.URL.createObjectURL(new Blob([data]));
+  anchorTag.href = url;
+  anchorTag.download = fileName;
+  document.body.append(anchorTag);
+  anchorTag.click();
+  anchorTag.remove();
+  window.URL.revokeObjectURL(url);
 }
