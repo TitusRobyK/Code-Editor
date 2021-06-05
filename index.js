@@ -89,7 +89,7 @@ function loadSample(mode) {
     });
   }
   var oldModel = editor.getModel();
-  var newModel = monaco.editor.createModel("", mode.modeId);
+  var newModel = monaco.editor.createModel(editor.getValue(), mode.modeId);
   editor.setModel(newModel);
   if (oldModel) {
     oldModel.dispose();
