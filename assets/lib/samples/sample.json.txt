@@ -1,68 +1,34 @@
-﻿{
-	"type": "team",
-	"test": {
-		"testPage": "tools/testing/run-tests.htm",
-		"enabled": true
+﻿[
+	{
+		"id": 1,
+		"first_name": "Titus",
+		"last_name": "Roby",
+		"email": "johndoe@census.gov",
+		"gender": "Male",
+		"ip_address": "26.58.193.2"
 	},
-    "search": {
-        "excludeFolders": [
-			".git",
-			"node_modules",
-			"tools/bin",
-			"tools/counts",
-			"tools/policheck",
-			"tools/tfs_build_extensions",
-			"tools/testing/jscoverage",
-			"tools/testing/qunit",
-			"tools/testing/chutzpah",
-			"server.net"
-        ]
-    },
-	"languages": {
-		"vs.languages.typescript": {
-			"validationSettings": [{
-				"scope":"/",
-				"noImplicitAny":true,
-				"noLib":false,
-				"extraLibs":[],
-				"semanticValidation":true,
-				"syntaxValidation":true,
-				"codeGenTarget":"ES5",
-				"moduleGenTarget":"",
-				"lint": {
-                    "emptyBlocksWithoutComment": "warning",
-                    "curlyBracketsMustNotBeOmitted": "warning",
-                    "comparisonOperatorsNotStrict": "warning",
-                    "missingSemicolon": "warning",
-                    "unknownTypeOfResults": "warning",
-                    "semicolonsInsteadOfBlocks": "warning",
-                    "functionsInsideLoops": "warning",
-                    "functionsWithoutReturnType": "warning",
-                    "tripleSlashReferenceAlike": "warning",
-                    "unusedImports": "warning",
-                    "unusedVariables": "warning",
-                    "unusedFunctions": "warning",
-                    "unusedMembers": "warning"
-                }
-			}, 
-			{
-				"scope":"/client",
-				"baseUrl":"/client",
-				"moduleGenTarget":"amd"
-			},
-			{
-				"scope":"/server",
-				"moduleGenTarget":"commonjs"
-			},
-			{
-				"scope":"/build",
-				"moduleGenTarget":"commonjs"
-			},
-			{
-				"scope":"/node_modules/nake",
-				"moduleGenTarget":"commonjs"
-			}],
-			"allowMultipleWorkers": true
-		}
+	{
+		"id": 2,
+		"first_name": "Jegadees",
+		"last_name": "V",
+		"email": "jamesbond@senate.gov",
+		"gender": "Male",
+		"ip_address": "229.179.4.212"
+	},
+	{
+		"id": 3,
+		"first_name": "Noell",
+		"last_name": "Bea",
+		"email": "nbea2@imageshack.us",
+		"gender": "Female",
+		"ip_address": "180.66.162.255"
+	},
+	{
+		"id": 4,
+		"first_name": "Willard",
+		"last_name": "Valek",
+		"email": "wvalek3@vk.com",
+		"gender": "Male",
+		"ip_address": "67.76.188.26"
 	}
-}
+]

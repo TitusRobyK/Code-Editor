@@ -1,111 +1,55 @@
-// We often need our programs to perform operations on
-// collections of data, like selecting all items that
-// satisfy a given predicate or mapping all items to a new
-// collection with a custom function.
-
-// In some languages it's idiomatic to use [generic](http://en.wikipedia.org/wiki/Generic_programming)
-// data structures and algorithms. Go does not support
-// generics; in Go it's common to provide collection
-// functions if and when they are specifically needed for
-// your program and data types.
-
-// Here are some example collection functions for slices
-// of `strings`. You can use these examples to build your
-// own functions. Note that in some cases it may be
-// clearest to just inline the collection-manipulating
-// code directly, instead of creating and calling a
-// helper function.
-
 package main
 
-import "strings"
-import "fmt"
+import (
+    "bufio"
+    "fmt"
+    "io"
+    "os"
+    "strconv"
+    "strings"
+)
 
-// Returns the first index of the target string `t`, or
-// -1 if no match is found.
-func Index(vs []string, t string) int {
-    for i, v := range vs {
-        if v == t {
-            return i
-        }
-    }
-    return -1
-}
+func processData(s string, k int32) string {
+    // Write your code here
 
-// Returns `true` if the target string t is in the
-// slice.
-func Include(vs []string, t string) bool {
-    return Index(vs, t) >= 0
-}
-
-// Returns `true` if one of the strings in the slice
-// satisfies the predicate `f`.
-func Any(vs []string, f func(string) bool) bool {
-    for _, v := range vs {
-        if f(v) {
-            return true
-        }
-    }
-    return false
-}
-
-// Returns `true` if all of the strings in the slice
-// satisfy the predicate `f`.
-func All(vs []string, f func(string) bool) bool {
-    for _, v := range vs {
-        if !f(v) {
-            return false
-        }
-    }
-    return true
-}
-
-// Returns a new slice containing all strings in the
-// slice that satisfy the predicate `f`.
-func Filter(vs []string, f func(string) bool) []string {
-    vsf := make([]string, 0)
-    for _, v := range vs {
-        if f(v) {
-            vsf = append(vsf, v)
-        }
-    }
-    return vsf
-}
-
-// Returns a new slice containing the results of applying
-// the function `f` to each string in the original slice.
-func Map(vs []string, f func(string) string) []string {
-    vsm := make([]string, len(vs))
-    for i, v := range vs {
-        vsm[i] = f(v)
-    }
-    return vsm
 }
 
 func main() {
+    reader := bufio.NewReaderSize(os.Stdin, 16 * 1024 * 1024)
 
-    // Here we try out our various collection functions.
-    var strs = []string{"peach", "apple", "pear", "plum"}
+    stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
+    checkError(err)
 
-    fmt.Println(Index(strs, "pear"))
+    defer stdout.Close()
 
-    fmt.Println(Include(strs, "grape"))
+    writer := bufio.NewWriterSize(stdout, 16 * 1024 * 1024)
 
-    fmt.Println(Any(strs, func(v string) bool {
-        return strings.HasPrefix(v, "p")
-    }))
+    nTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+    checkError(err)
+    n := int32(nTemp)
+    s := readLine(reader)
 
-    fmt.Println(All(strs, func(v string) bool {
-        return strings.HasPrefix(v, "p")
-    }))
+    kTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+    checkError(err)
+    k := int32(kTemp)
 
-    fmt.Println(Filter(strs, func(v string) bool {
-        return strings.Contains(v, "e")
-    }))
+    result := processData(s, k)
 
-    // The above examples all used anonymous functions,
-    // but you can also use named functions of the correct
-    // type.
-    fmt.Println(Map(strs, strings.ToUpper))
+    fmt.Fprintf(writer, "%s\n", result)
+    writer.Flush()
+}
 
+func readLine(reader *bufio.Reader) string {
+    str, _, err := reader.ReadLine()
+    if err == io.EOF {
+        return ""
+    }
+
+    return strings.TrimRight(string(str), "\r\n")
+}
+
+func checkError(err error) {
+    if err != nil {
+        panic(err)
+    }
 }
