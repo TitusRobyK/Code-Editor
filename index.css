@@ -73,7 +73,7 @@ header .editor__header > img {
 }
 
 .mRaft__editor .editor .editor-frame #editor .alert {
-  margin: 18% auto 0;
+  margin: 20% auto 0;
   width: 30%;
   text-align: center;
   color: #b94a48;
@@ -155,5 +155,9 @@ footer .footer__Wrap {
 
   footer .footer__Wrap .moonRaft__logo > img {
     width: 112px;
+  }
+  .mRaft__editor .editor .editor-frame #editor .alert {
+    margin: 50% auto 0;
+    width: 70%;
   }
 }
