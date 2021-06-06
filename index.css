@@ -1,103 +1,149 @@
+body {
+  margin: 0;
+  font: 400 14px/1.4em "Segoe UI", "Open Sans", "Calibri", "Candara", Arial;
+  background: #f3f7f7;
+}
+
 .mRaft__editor {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 60px;
+  box-sizing: border-box;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+header .editor__header {
+  margin: 0 0 16px;
+  box-shadow: 0 4px 5px 2px rgb(0 0 0 / 30%);
+  background: #fff;
+  padding-left: 24px;
+  box-sizing: border-box;
+  display: inherit;
+}
+
+header .editor__header > img {
+  max-width: 240px;
+}
+
+.mRaft__editor .mRaft__editor__tools {
+  display: flex;
+  align-items: center;
+}
+
+.mRaft__editor button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mRaft__editor .reset__btn {
+  width: 22px;
+  height: 22px;
+}
+
+.mRaft__editor button > img {
+  width: 15px;
+  height: 15px;
+}
+
+.mRaft__editor .download__btn {
+  margin-left: 16px;
+  width: 28px;
+  height: 28px;
+}
+
+.mRaft__editor > .container {
+  width: 100%;
+}
+.mRaft__editor .editor.row .row {
+  display: flex;
+  margin: 20px 0 15px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mRaft__editor .editor.row .row .span4 {
+  margin-left: 16px;
+}
+
+.mRaft__editor select {
+  width: 220px;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  color: #080808;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.mRaft__editor .control-label {
+  font-size: 0.875rem;
+  color: #555555;
+  margin-right: 4px;
+}
+
+.mRaft__editor #editor {
+  width: 100% !important;
+  height: 582px;
+  border: 1px solid #eee;
+  margin-bottom: 60px;
+}
+
+footer .footer__Wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0 0;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  padding-top: 16px;
+  box-shadow: 0 6px 16px 0 rgb(0 0 0 / 30%);
+}
+
+.footer__Wrap .heart__logo > img {
+  width: 22px;
+  height: 25px;
+  margin: 0 5px;
+  position: relative;
+  bottom: 4px;
+}
+.footer__Wrap .moonRaft__logo {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .mRaft__editor {
+    padding: 0;
   }
   .mRaft__editor .editor.row .row {
-	display: flex;
-	margin: 20px 0 15px;
+    flex-direction: column;
+    padding-left: 12px;
+    margin: 0 0 10px;
+    align-items: center;
   }
-  
   .mRaft__editor .editor.row .row .span4 {
-	margin-left: 30px;
-	min-width: 370px;
+    margin: 12px 0 0;
+    min-width: 100px;
   }
-  
-  .mRaft__editor select {
-	width: 220px;
-	background-color: #fff;
-	border: 1px solid #bbb;
-	color: #080808;
-	font: 400 14px/1.4em "Segoe UI", "Open Sans", "Calibri", "Candara", Arial,
-	  sans-serif;
-	padding: 4px 6px;
-	cursor: pointer;
+
+  .mRaft__editor .editor.row .row .span4 > .control-label {
+    min-width: 100px;
+    display: inline-block;
   }
-  
-  .mRaft__editor .control-label {
-	font-size: 0.875rem;
-	color: #555555;
-	font: 400 14px/1.4em "Segoe UI", "Open Sans", "Calibri", "Candara", Arial;
-	margin-right: 4px;
+}
+
+@media screen and (max-width: 480px) {
+  .mRaft__editor .editor.row .row .span4 > .control-label {
+    display: block;
   }
-  
-  .mRaft__editor .monaco-scrollable-element > .invisible.fade {
-	transition: opacity 0.8s linear;
+
+  footer .footer__Wrap .moonRaft__logo > img {
+    width: 112px;
   }
-  
-  .mRaft__editor .monaco-scrollable-element > .visible {
-	opacity: 1;
-	background: transparent;
-	transition: opacity 0.1s linear;
-  }
-  .mRaft__editor #editor {
-	height: 90vh !important;
-	border: 1px solid #eee;
-  }
-  
-  @media screen and (min-width: 1250px) {
-	.mRaft__editor #editor {
-	  width: 1250px !important;
-	  height: 610px;
-	  border: 1px solid #eee;
-	}
-  }
-  
-  @media screen and (min-width: 1024px) and (max-width: 1250px) {
-	.mRaft__editor #editor {
-	  width: 1024px !important;
-	}
-  }
-  
-  @media screen and (min-width: 991px) and (max-width: 1024px) {
-	.mRaft__editor #editor {
-	  width: 991px !important;
-	}
-  }
-  
-  @media screen and (min-width: 768px) and (max-width: 990px) {
-	.mRaft__editor #editor {
-	  width: 768px !important;
-	}
-  }
-  
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-	.mRaft__editor #editor {
-	  width: 480px !important;
-	}
-  }
-  
-  @media screen and (min-width: 320px) and (max-width: 479px) {
-	.mRaft__editor #editor {
-	  width: 320px !important;
-	}
-  }
-  
-  @media screen and (max-width: 767px) {
-	.mRaft__editor .editor.row .row {
-	  flex-direction: column;
-	  padding-left: 12px;
-	  margin: 0 0 10px;
-	}
-	.mRaft__editor .editor.row .row .span4 {
-	  margin: 20px 0 0;
-	  min-width: 100px;
-	}
-	.mRaft__editor .editor.row .row .span4 > .control-label {
-	  min-width: 100px;
-	  display: inline-block;
-	}
-	.mRaft__editor #editor {
-	  height: 80vh;
-	}
-  }
-  
+}
