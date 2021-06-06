@@ -78,6 +78,7 @@ window.onload = function () {
     .querySelector(
       "#copyright__year"
     ).innerHTML = `© ${new Date().getFullYear()} Made With`;
+  showTime(); // Function call to initialize the time on page load
 };
 
 function loadSample(mode) {
@@ -167,4 +168,33 @@ function downloadEditorCode(fileName, data) {
   anchorTag.click();
   anchorTag.remove();
   window.URL.revokeObjectURL(url);
+}
+
+/* setInterval method to call showTime method to update the digital clock for every second */
+setInterval(showTime, 1000);
+/* Logic to display the current running time in the footer*/
+function showTime() {
+  let time = new Date();
+  let hour = time.getHours();
+  let min = time.getMinutes();
+  let sec = time.getSeconds();
+  let am_pm = "AM";
+
+  if (hour > 12) {
+    hour -= 12;
+    am_pm = "PM";
+  }
+  if (hour == 0) {
+    hour = 12;
+    am_pm = "AM";
+  }
+
+  hour = hour < 10 ? `0${hour}` : hour;
+  min = min < 10 ? `0${min}` : min;
+  sec = sec < 10 ? `0${sec}` : sec;
+
+  let currentTime = `${hour}:${min}:${sec} ${am_pm}`;
+
+  document.querySelector(".footer__timer #clock__timer").innerHTML =
+    currentTime;
 }
