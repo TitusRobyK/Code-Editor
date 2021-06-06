@@ -126,6 +126,9 @@ footer .footer__Wrap {
 .footer__Wrap .moonRaft__logo {
   margin-left: 10px;
 }
+footer .footer__Wrap .moonRaft__logo > img {
+  height: 10px;
+}
 
 @media screen and (max-width: 767px) {
   .mRaft__editor {
