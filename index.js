@@ -31,6 +31,7 @@ require(["vs/editor/editor.main"], function () {
     return modesIds.map(function (modeId) {
       return {
         modeId: modeId,
+        sampleURL: "./assets/lib/samples/sample." + modeId + ".txt",
       };
     });
   })();
@@ -80,17 +81,50 @@ window.onload = function () {
 };
 
 function loadSample(mode) {
-  if (!editor) {
-    editor = monaco.editor.create(document.getElementById("editor"), {
-      model: null,
-    });
-  }
-  var oldModel = editor.getModel();
-  var newModel = monaco.editor.createModel(editor.getValue(), mode.modeId);
-  editor.setModel(newModel);
-  if (oldModel) {
-    oldModel.dispose();
-  }
+  xhr(mode.sampleURL, function (err, data) {
+    document.querySelector("#editor").innerHTML = "";
+    if (err) {
+      if (editor) {
+        if (editor.getModel()) {
+          editor.getModel().dispose();
+        }
+        editor.dispose();
+        editor = null;
+      }
+      document.querySelector("#editor").innerHTML =
+        '<p class="alert alert-error">Failed to load ' +
+        mode.modeId +
+        " sample</p>";
+      return;
+    }
+    if (!editor) {
+      editor = monaco.editor.create(document.getElementById("editor"), {
+        model: null,
+      });
+    }
+    var oldModel = editor.getModel();
+    var newModel = monaco.editor.createModel(data, mode.modeId);
+    editor.setModel(newModel);
+    if (oldModel) {
+      oldModel.dispose();
+    }
+  });
+}
+
+/* Function to fetch the sample code from samples folder*/
+function xhr(url, cb) {
+  var httpClient = new XMLHttpRequest();
+  httpClient.onreadystatechange = function () {
+    if (httpClient.readyState == 4) {
+      if (httpClient.status == 200) {
+        cb(null, httpClient.responseText);
+      } else {
+        cb("Failed to load", null);
+      }
+    }
+  };
+  httpClient.open("GET", url, true);
+  httpClient.send();
 }
 
 function changeTheme(theme) {
