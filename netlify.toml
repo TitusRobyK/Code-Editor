@@ -1,5 +1,5 @@
 [build]
-  publish = "/"
+  publish = "main/"
   command = "npm install ."
   [build.processing]
     skip_processing = false
@@ -39,5 +39,5 @@
 
 [[redirects]]
     from = "/*"
-    to = "/index.html"
+    to = "main/index.html"
     status = 200
