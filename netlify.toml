@@ -1,4 +1,5 @@
 [build]
+  publish = "dist/"
   command = "npm install ."
   [build.processing]
     skip_processing = false
