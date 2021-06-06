@@ -1,7 +1,7 @@
 "use strict";
 var editor = null;
 
-require.config({ paths: { vs: "node_modules/monaco-editor/min/vs" } });
+require.config({ paths: { vs: "../node_modules/monaco-editor/min/vs" } });
 require(["vs/editor/editor.main"], function () {
   editor = monaco.editor.create(document.getElementById("editor"), {
     value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join("\n"),
@@ -31,7 +31,7 @@ require(["vs/editor/editor.main"], function () {
     return modesIds.map(function (modeId) {
       return {
         modeId: modeId,
-        sampleURL: "./assets/lib/samples/sample." + modeId + ".txt",
+        sampleURL: "../assets/lib/samples/sample." + modeId + ".txt",
       };
     });
   })();
