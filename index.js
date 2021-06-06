@@ -20,22 +20,7 @@ require(["vs/editor/editor.main"], function () {
 
   /* Code snippet to listen cmd/ctrl + S key event */
   editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, function () {
-    var placeHolderValue = "File Name";
-    var fileName = prompt("Input suitable file name ", placeHolderValue);
-    var selectedLanguage = monaco.languages
-      .getLanguages()
-      .filter(function (language) {
-        return language.id == editor.getModel()._languageIdentifier.language;
-      });
-    var fileExtension = selectedLanguage[0].extensions[0];
-    if (fileName != null) {
-      downloadEditorCode(
-        `${fileName && fileName != placeHolderValue ? fileName : "file"}${
-          fileExtension ? fileExtension : ".txt"
-        }`,
-        editor.getValue()
-      );
-    }
+    saveToFile();
   });
 
   var MODES = (function () {
@@ -74,12 +59,24 @@ require(["vs/editor/editor.main"], function () {
     .addEventListener("change", function (evt) {
       changeTheme(this.selectedIndex);
     });
+  document
+    .querySelector(".download__btn")
+    .addEventListener("click", saveToFile);
+  document.querySelector(".reset__btn").addEventListener("click", resetCodePad);
 });
 
 window.onresize = function () {
   if (editor) {
     editor.layout();
   }
+};
+
+window.onload = function () {
+  document
+    .querySelector(".footer__Wrap")
+    .querySelector(
+      "#copyright__year"
+    ).innerHTML = `© ${new Date().getFullYear()} Made With`;
 };
 
 function loadSample(mode) {
@@ -99,6 +96,31 @@ function loadSample(mode) {
 function changeTheme(theme) {
   var newTheme = theme === 1 ? "vs-dark" : theme === 0 ? "vs" : "hc-black";
   monaco.editor.setTheme(newTheme);
+}
+
+/* Function to get the file name from the user and download that in the system */
+function saveToFile() {
+  var placeHolderValue = "File Name";
+  var fileName = prompt("Input suitable file name ", placeHolderValue);
+  var selectedLanguage = monaco.languages
+    .getLanguages()
+    .filter(function (language) {
+      return language.id == editor.getModel()._languageIdentifier.language;
+    });
+  var fileExtension = selectedLanguage[0].extensions[0];
+  if (fileName != null) {
+    downloadEditorCode(
+      `${fileName && fileName != placeHolderValue ? fileName : "file"}${
+        fileExtension ? fileExtension : ".txt"
+      }`,
+      editor.getValue()
+    );
+  }
+}
+
+/* Function to reset the editor*/
+function resetCodePad() {
+  editor.setValue("");
 }
 
 /* Function to download the file with user inputted file name */
