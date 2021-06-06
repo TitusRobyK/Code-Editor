@@ -1,6 +1,5 @@
 [build]
   publish = "main/"
-  command = "npm install ."
   [build.processing]
     skip_processing = false
   [build.processing.css]
