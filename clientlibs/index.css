@@ -108,9 +108,7 @@ header .editor__header > img {
   margin-bottom: 60px;
 }
 
-footer .footer__Wrap {
-  display: flex;
-  justify-content: center;
+footer {
   width: 100%;
   margin: 20px 0 0;
   background: #fff;
@@ -118,6 +116,11 @@ footer .footer__Wrap {
   bottom: 0;
   padding-top: 16px;
   box-shadow: 0 6px 16px 0 rgb(0 0 0 / 30%);
+}
+
+footer .footer__Wrap {
+  display: flex;
+  justify-content: center;
 }
 
 .footer__Wrap .heart__logo > img {
@@ -132,6 +135,14 @@ footer .footer__Wrap {
 }
 footer .footer__Wrap .moonRaft__logo > img {
   height: 10px;
+}
+
+footer .footer__timer {
+  color: #4a4a4a;
+  font-size: 11px;
+  position: absolute;
+  bottom: 10px;
+  right: 60px;
 }
 
 @media screen and (max-width: 767px) {
@@ -155,6 +166,14 @@ footer .footer__Wrap .moonRaft__logo > img {
   }
   header .editor__header {
     padding: 5px 0 0;
+  }
+  footer .footer__timer {
+    position: unset;
+    text-align: center;
+    padding-bottom: 16px;
+  }
+  .mRaft__editor #editor {
+    margin-bottom: 100px;
   }
 }
 
