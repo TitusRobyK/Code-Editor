@@ -1,0 +1,42 @@
+[build]
+  command = "npm install ."
+  [build.processing]
+    skip_processing = false
+  [build.processing.css]
+    bundle = true
+    minify = false
+  [build.processing.js]
+    bundle = true
+    minify = false
+  [build.processing.html]
+    pretty_urls = true
+  [build.processing.images]
+    compress = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    x-content-type-options="nosniff"
+    access-control-allow-credentials="true"
+    X-XSS-Protection = "1; mode=block"
+    access-control-allow-headers="x-requested-with, X-Accept-Charset,X-Accept,Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token"
+    access-control-allow-methods="POST, GET, OPTIONS, HEAD"
+    access-control-allow-origin="*"
+    Referrer-Policy="same-origin"
+    feature-policy ='''
+    accelerometer 'none'; 
+    camera 'none'; 
+    geolocation 'none'; 
+    gyroscope 'none'; 
+    magnetometer 'none'; 
+    microphone 'none'; 
+    payment 'none'; 
+    usb 'none' '''
+    cache-control = "public, max-age=1296000"
+    content-security-policy= '''frame-ancestors 'self' '''
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
