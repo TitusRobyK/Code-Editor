@@ -1,101 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moonraft Code Pad</title>
-    <meta name="description" content="Free Online Code Editor to quickly format or edit random code without disturbing your Local IDE.">
-    <meta name="keywords" content="Code Editor,Monaco,Online Code Editor, Code Pad,Moonraft Innovation Labs, Moonraft,Open Source">
-    <link rel="canonical" href="https://codepad.moonraft.com/">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <meta name="robots" content="index,nofollow">
-    <link
-      data-name="vs/editor/editor.main"
-      rel="stylesheet"
-      href="./js/monaco-editor/min/vs/editor/editor.main.css"
-    />
-    <link href="./css/index.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <a class="editor__header" href="#">
-        <img src="./assets/images/editor_logo.png" alt="codepad" />
-      </a>
-    </header>
-    <main>
-      <section class="try mRaft__editor">
-        <div class="container">
-          <div class="editor row">
-            <div class="span9">
-              <div class="row">
-                <div class="span4">
-                  <label class="control-label">Language</label>
-                  <select class="language-picker"></select>
-                </div>
-                <div class="span4">
-                  <label class="control-label">Theme</label>
-                  <select class="theme-picker">
-                    <option>Light</option>
-                    <option>Dark</option>
-                    <option>Contrast Dark</option>
-                  </select>
-                </div>
-                <div class="span4 mRaft__editor__tools">
-                  <button class="reset__btn">
-                    <svg
-                      viewBox="0 0 48 48"
-                      width="1em"
-                      height="1em"
-                      class="reset__btn"
-                    >
-                      <path
-                        d="M40 8.9C31.7.1 17.7-.3 8.9 8L5.7 4.9c-.4-.4-.9-.7-1.5-.7C3 4.2 2 5.2 2 6.4v8.8c0 1.2 1 2.2 2.2 2.2H13c.6 0 1.2-.2 1.6-.7.9-.9.8-2.3 0-3.1L12 11.1c3.3-3 7.5-4.7 12-4.7 9.7 0 17.6 7.9 17.6 17.6S33.7 41.6 24 41.6c-9.7 0-17.6-7.9-17.6-17.6 0-1.2-1-2.2-2.2-2.2C3 21.8 2 22.8 2 24c0 5.6 2.1 11 6 15.1 8.3 8.8 22.3 9.3 31.1.9 8.8-8.3 9.2-22.3.9-31.1z"
-                      ></path>
-                      <path
-                        d="M26.6 31.4c.4.4.9.6 1.4.6s1-.2 1.4-.6l6-6c.8-.8.8-2 0-2.8l-6-6c-.8-.8-2-.8-2.8 0-.8.8-.8 2 0 2.8l4.6 4.6-4.6 4.6c-.8.8-.8 2 0 2.8zm-5.2-14.8c-.8-.8-2-.8-2.8 0l-6 6c-.8.8-.8 2 0 2.8l6 6c.4.4.9.6 1.4.6s1-.2 1.4-.6c.8-.8.8-2 0-2.8L16.8 24l4.6-4.6c.8-.8.8-2 0-2.8z"
-                      ></path>
-                    </svg>
-                  </button>
-                  <button class="download__btn">
-                    <img src="./assets/images/download.png" alt="download" />
-                  </button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonraft Code Pad</title>
+  <meta name="description" content="Free Online Code Editor to quickly format or edit random code without disturbing your Local IDE.">
+  <meta name="keywords" content="Code Editor,Monaco,Online Code Editor, Code Pad,Moonraft Innovation Labs, Moonraft,Open Source">
+  <link rel="canonical" href="https://codepad.moonraft.com/">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codepad.moonraft.com/">
+  <meta property="og:title" content="Moonraft Code Pad">
+  <meta property="og:description" content="Free Online Code Editor to quickly format or edit random code without disturbing your Local IDE.">
+  <meta property="og:image"content="./assets/preview-card.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://codepad.moonraft.com/">
+  <meta property="twitter:title" content="Moonraft Code Pad">
+  <meta property="twitter:description" content="Free Online Code Editor to quickly format or edit random code without disturbing your Local IDE.">
+  <meta property="twitter:image" content="./assets/preview-card.png">
+  
+  <meta name="robots" content="index,nofollow">
+  <link data-name="vs/editor/editor.main" rel="stylesheet" href="./js/monaco-editor/min/vs/editor/editor.main.css" />
+  <link href="./css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <a class="editor__header" href="#">
+      <img src="./assets/images/editor_logo.png" alt="codepad" />
+    </a>
+  </header>
+  <main>
+    <section class="try mRaft__editor">
+      <div class="container">
+        <div class="editor row">
+          <div class="span9">
+            <div class="row">
+              <div class="span4">
+                <label class="control-label">Language</label>
+                <select class="language-picker"></select>
+              </div>
+              <div class="span4">
+                <label class="control-label">Theme</label>
+                <select class="theme-picker">
+                  <option>Light</option>
+                  <option>Dark</option>
+                  <option>Contrast Dark</option>
+                </select>
+              </div>
+              <div class="span4 mRaft__editor__tools">
+                <button class="reset__btn">
+                  <svg viewBox="0 0 48 48" width="1em" height="1em" class="reset__btn">
+                    <path
+                      d="M40 8.9C31.7.1 17.7-.3 8.9 8L5.7 4.9c-.4-.4-.9-.7-1.5-.7C3 4.2 2 5.2 2 6.4v8.8c0 1.2 1 2.2 2.2 2.2H13c.6 0 1.2-.2 1.6-.7.9-.9.8-2.3 0-3.1L12 11.1c3.3-3 7.5-4.7 12-4.7 9.7 0 17.6 7.9 17.6 17.6S33.7 41.6 24 41.6c-9.7 0-17.6-7.9-17.6-17.6 0-1.2-1-2.2-2.2-2.2C3 21.8 2 22.8 2 24c0 5.6 2.1 11 6 15.1 8.3 8.8 22.3 9.3 31.1.9 8.8-8.3 9.2-22.3.9-31.1z">
+                    </path>
+                    <path
+                      d="M26.6 31.4c.4.4.9.6 1.4.6s1-.2 1.4-.6l6-6c.8-.8.8-2 0-2.8l-6-6c-.8-.8-2-.8-2.8 0-.8.8-.8 2 0 2.8l4.6 4.6-4.6 4.6c-.8.8-.8 2 0 2.8zm-5.2-14.8c-.8-.8-2-.8-2.8 0l-6 6c-.8.8-.8 2 0 2.8l6 6c.4.4.9.6 1.4.6s1-.2 1.4-.6c.8-.8.8-2 0-2.8L16.8 24l4.6-4.6c.8-.8.8-2 0-2.8z">
+                    </path>
+                  </svg>
+                </button>
+                <button class="download__btn">
+                  <img src="./assets/images/download.png" alt="download" />
+                </button>
+              </div>
+            </div>
+            <div class="editor-frame">
+              <div class="loading editor" style="display: none">
+                <div class="progress progress-striped active">
+                  <div class="bar"></div>
                 </div>
               </div>
-              <div class="editor-frame">
-                <div class="loading editor" style="display: none">
-                  <div class="progress progress-striped active">
-                    <div class="bar"></div>
-                  </div>
-                </div>
-                <div id="editor"></div>
-              </div>
+              <div id="editor"></div>
             </div>
           </div>
         </div>
-      </section>
-    </main>
-    <footer>
-      <div class="footer__Wrap">
-        <span id="copyright__year"></span>
-        <div class="heart__logo">
-          <img src="./assets/images/black-heart-icon.png" alt="black_heart" />
-        </div>
-        <span>by</span>
-        <a
-          class="moonRaft__logo"
-          href="https://moonraft.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="./assets/images/moonraft_logo.svg" alt="moonraft" />
-        </a>
       </div>
-      <div class="footer__timer">
-        The time now is : <span id="clock__timer"></span>
+    </section>
+  </main>
+  <footer>
+    <div class="footer__Wrap">
+      <span id="copyright__year"></span>
+      <div class="heart__logo">
+        <img src="./assets/images/black-heart-icon.png" alt="black_heart" />
       </div>
-    </footer>
-  </body>
-  <script src="./js/monaco-editor/min/vs/loader.js"></script>
-  <script src="./js/index.js"></script>
+      <span>by</span>
+      <a class="moonRaft__logo" href="https://moonraft.com" target="_blank" rel="noopener noreferrer">
+        <img src="./assets/images/moonraft_logo.svg" alt="moonraft" />
+      </a>
+    </div>
+    <div class="footer__timer">
+      The time now is : <span id="clock__timer"></span>
+    </div>
+  </footer>
+</body>
+<script src="./js/monaco-editor/min/vs/loader.js"></script>
+<script src="./js/index.js"></script>
+
 </html>
