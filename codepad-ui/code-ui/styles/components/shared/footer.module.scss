@@ -1,0 +1,31 @@
+.footerWrap {
+  width: 100%;
+  margin: 20px 0 0;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  padding: 12px 0;
+  box-shadow: 0 6px 16px 0 rgb(0 0 0 / 30%);
+  .footerWrap__desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span:first-child {
+      margin-right: 3px;
+    }
+    span {
+      margin-left: 8px;
+    }
+    .footerWrap__desc__heartLogo {
+      margin: 0 5px !important;
+      position: absolute !important;
+      left: -4px !important;
+    }
+    .footerWrap__desc__moonraftLogo {
+      margin-left: 10px;
+      @media screen and (max-width: 767px) {
+        width: 102px !important;
+      }
+    }
+  }
+}
