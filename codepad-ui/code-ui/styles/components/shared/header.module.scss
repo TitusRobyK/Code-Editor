@@ -1,0 +1,43 @@
+.headerWrap {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  .headerWrap__cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 4px 5px 2px rgb(0 0 0 / 30%);
+    background: #fff;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    .headerWrap__cont__signIn {
+      border: 0;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      font-size: inherit;
+      font-style: normal;
+      max-width: 100%;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 0px 8px;
+      font-weight: bold;
+      outline: none !important;
+      color: rgb(66, 82, 110) !important;
+      height: 40px !important;
+      line-height: 40px !important;
+      background: rgb(255, 255, 255) !important;
+      box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 0px !important;
+    }
+    .headerWrap__cont__signIn:before {
+      background: url("../../../public/assets/images/google-logo.svg");
+      content: "";
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+  }
+}
